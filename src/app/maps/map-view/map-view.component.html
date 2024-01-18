@@ -1,0 +1,18 @@
+<div id="map">
+  <h1 class="mx-2" style="text-align: center;">Map</h1>
+  <div *ngIf="issPosition.latitude !== '' && issPosition.longitude !== ''" id="coordinates" class="mx-2">
+    <p class="">Latitude: {{ issPosition.latitude }}</p>
+    <p class="">Longitude: {{ issPosition.longitude }}</p>
+  </div>
+  <div id="gmap">
+    <google-map
+    *ngIf="issPosition.latitude !== '' && issPosition.longitude !== ''"
+    [center]="{ lat: +issPosition.latitude, lng: +issPosition.longitude }"
+    [options]="{ zoom: 4 }"
+    >
+
+      <map-marker [position]="{ lat: +issPosition.latitude, lng: +issPosition.longitude }"></map-marker>
+
+    </google-map>
+  </div>
+</div>
