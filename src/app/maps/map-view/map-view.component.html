@@ -8,7 +8,15 @@
     <google-map
     *ngIf="issPosition.latitude !== '' && issPosition.longitude !== ''"
     [center]="{ lat: +issPosition.latitude, lng: +issPosition.longitude }"
-    [options]="{ zoom: 4 }"
+    [options]="{
+      zoom: 4,
+      zoomControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false
+      }"
+    [height]="590"
+    [width]="1280"
     >
 
       <map-marker [position]="{ lat: +issPosition.latitude, lng: +issPosition.longitude }"></map-marker>
