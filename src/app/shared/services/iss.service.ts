@@ -11,6 +11,8 @@ export class IssService {
   public onNewCoordinates: EventEmitter<IssPosition> = new EventEmitter<IssPosition>();
   public onLocationHistoryUpdate: EventEmitter<IssPosition[]> = new EventEmitter<IssPosition[]>();
 
+  public onSelectedCoordinate: EventEmitter<IssPosition> = new EventEmitter<IssPosition>();
+
   constructor(private http: HttpClient) {}
 
   getIssPosition(): Observable<SearchResponse> {
@@ -25,5 +27,9 @@ export class IssService {
 
     this.onNewCoordinates.emit(coordinates);
     this.onLocationHistoryUpdate.emit(this.locationHistory);
+  }
+
+  selectedCoordinate(coordinate: IssPosition): void {
+    this.onSelectedCoordinate.emit(coordinate);
   }
 }
